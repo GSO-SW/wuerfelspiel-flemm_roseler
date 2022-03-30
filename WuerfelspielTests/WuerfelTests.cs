@@ -8,16 +8,19 @@ namespace WuerfelspielTests
     public class WuerfelTests
     {
         [TestMethod]
-        public void Wuerfel_KannErstelltWerden()
+        public void Wuerfel_KannWerteHaben()
         {
             //Arrange
-            Wuerfel w = new Wuerfel();
+            int anzahlSeiten = 6;
+            Random rdm = new Random();
 
             //Act
 
+            Wuerfel w = new Wuerfel(anzahlSeiten, rdm);
 
             //Assert
-            Assert.IsNotNull(w);
+
+            Assert.AreEqual(anzahlSeiten, w.AnzahlSeiten);
         }
     }
 }
