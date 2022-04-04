@@ -8,7 +8,7 @@ namespace WuerfelspielTests
     public class WuerfelTests
     {
         [TestMethod]
-        public void Wuerfel_KannErstelltWerden()
+        public void Wuerfel_KannWerteHaben()
         {
             //Arrange
             int AnzahlSeiten = 6;
