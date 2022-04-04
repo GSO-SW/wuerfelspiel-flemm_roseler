@@ -11,13 +11,17 @@ namespace WuerfelspielTests
         public void Wuerfel_KannErstelltWerden()
         {
             //Arrange
-            Wuerfel w = new Wuerfel();
+            int AnzahlSeiten = 6;
+            int LetztesErgebnis = -1;
+            bool Gesichert = false;
 
             //Act
-
+            Wuerfel w = new Wuerfel(AnzahlSeiten);
 
             //Assert
-            Assert.IsNotNull(w);
+            Assert.AreEqual(AnzahlSeiten, w.AnzahlSeiten);
+            Assert.AreEqual(LetztesErgebnis, w.LetztesErgebnis);
+            Assert.AreEqual(Gesichert, w.Gesichert);
         }
     }
 }
