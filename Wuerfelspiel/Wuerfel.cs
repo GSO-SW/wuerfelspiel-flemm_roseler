@@ -12,6 +12,7 @@ namespace Wuerfelspiel
         private int anzahlSeiten;
         private int letztesErgebnis;
         private bool gesichert;
+        Random rnd = new Random();
 
         public Wuerfel(int anzahlSeiten)
         {
@@ -48,6 +49,12 @@ namespace Wuerfelspiel
         public void SicherungUmschalten()
         {
             gesichert = !gesichert;
+        }
+
+        public int Wuerfeln()
+        {
+            letztesErgebnis = rnd.Next(1, AnzahlSeiten + 1);
+            return letztesErgebnis;
         }
     }
 }

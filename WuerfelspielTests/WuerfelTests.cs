@@ -37,5 +37,18 @@ namespace WuerfelspielTests
             //Arrange
             Assert.AreEqual(GesicherterWuerfel, w.Gesichert);
         }
+
+        [TestMethod]
+        public void Wuerfeln_WuerfelKannGewuerfeltWerden()
+        {
+            //Arrange
+            Wuerfel w = new Wuerfel(6);
+
+            //Act
+            w.Wuerfeln();
+
+            //Assert
+            Assert.IsTrue(w.LetztesErgebnis > 0 && w.LetztesErgebnis < 7);
+        }
     }
 }
