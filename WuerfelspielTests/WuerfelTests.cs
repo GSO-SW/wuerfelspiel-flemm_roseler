@@ -48,7 +48,19 @@ namespace WuerfelspielTests
             w.Wuerfeln();
 
             //Assert
-            Assert.IsTrue(w.LetztesErgebnis > 0 && w.LetztesErgebnis < 7);
+            Assert.IsTrue(w.LetztesErgebnis > 0 && w.LetztesErgebnis < (w.AnzahlSeiten + 1));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void Wuerfeln_WuerfelKannNichtGewuerfeltWerdenWennGesichert()
+        {
+            //Arrange
+            Wuerfel w = new Wuerfel(6);
+
+            //Act
+            w.SicherungUmschalten();
+            w.Wuerfeln();
         }
     }
 }
