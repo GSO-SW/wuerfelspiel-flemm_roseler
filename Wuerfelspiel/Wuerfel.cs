@@ -53,10 +53,10 @@ namespace Wuerfelspiel
 
         public int Wuerfeln()
         {
-            if (Gesichert == true)
-            {
-                throw new Exception("Wuerfel ist gesichert, deswegen kann er nicht gewürfelt werden");
-            }
+            //if (Gesichert == true)
+            //{
+            //    throw new Exception("Wuerfel ist gesichert, deswegen kann er nicht gewürfelt werden");
+            //}
 
             letztesErgebnis = rnd.Next(1, AnzahlSeiten + 1);
             return letztesErgebnis;
