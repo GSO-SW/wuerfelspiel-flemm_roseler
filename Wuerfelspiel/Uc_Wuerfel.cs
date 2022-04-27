@@ -15,29 +15,30 @@ namespace Wuerfelspiel
 
         int wert = 0;
         Wuerfel w;
+        bool wSicherung;
 
         public Uc_Wuerfel()
         {
             InitializeComponent();
 
             w = new Wuerfel(6);
-            wert = w.Wuerfeln();
         }
 
         private void Uc_Wuerfel_Load(object sender, EventArgs e)
         {
-            
+            Wuerfeln();
         }
 
         private void Uc_Wuerfel_Paint(object sender, PaintEventArgs e)
         {
             //Hilfsvariablen
             Graphics g = e.Graphics;
-            int h = this.Size.Height;
+            int h = this.Size.Height - 21;
             int w = this.Size.Width;
             int zaehler = 0;
-            Brush b = new SolidBrush(Color.HotPink);
+            Brush b = new SolidBrush(Color.Blue);
             Pen p = new Pen(Color.Black);
+            Pen pSicherung = new Pen(Color.Red, 5);
             Size s = new Size(w - 1, h - 1);
             
             //Punkte für Würfel
@@ -98,23 +99,32 @@ namespace Wuerfelspiel
                 g.FillEllipse(b, augen[7]);
                 g.FillEllipse(b, augen[8]);
             }
-            //foreach (Rectangle r in augen)
-            //{
-            //    g.FillEllipse(b, r);
-            //}
 
-            g.DrawRectangle(p, wuerfel);
+            if (wSicherung == true)
+            {
+                g.DrawRectangle(pSicherung, wuerfel);
+            }
+            else
+            {
+                g.DrawRectangle(p, wuerfel);
+            }
         }
 
-        private void Uc_Wuerfel_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             w.SicherungUmschalten();
+            wSicherung = w.Gesichert;
+            Refresh();
         }
 
-        private void Uc_Wuerfel_DoubleClick(object sender, EventArgs e)
+        public void Wuerfeln()
         {
             wert = w.Wuerfeln();
-            Refresh();
+        }
+
+        public int WuerfelWert()
+        {
+            return wert;
         }
     }
 }
